@@ -1,5 +1,6 @@
 #!/bin/sh
-# Maintained by: Omer SEN <omer.sen@serra.pw>
+# Maintained by: Omer SEN <omer_Dooottt_ sen@serra_Dooottt_pw>
+
 # 
 
 ################## VARS BEGIN ###############

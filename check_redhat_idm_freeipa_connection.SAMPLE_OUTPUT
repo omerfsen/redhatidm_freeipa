@@ -1,3 +1,4 @@
+
 ==============================================================================
 ==============================================================================
 == This is ipa610.serra.pw with IP Address of 192.168.122.106 ==
@@ -39,44 +40,113 @@ Checking UDP PORTS
 
 
 
+Checking /etc/resolv.conf contains NEW IPA DNS Server
+=====================================================
+We found 192.168.122.101 in /etc/resolv.conf which is OK
+We found 192.168.122.102 in /etc/resolv.conf which is OK
+
+
+Checking hostname of client is FQDN 
+=====================================================
+Your Hostname: ipa610.serra.pw is OK
+
+
+Checking if ipa-client RPM Packages are installed
+=====================================================
+IPA client package: ipa-client is installed OK
+ipa-client-3.0.0-51.el6.x86_64
+
+
+
+
 DNS RECORDS CHECKED AGAINST 192.168.122.101 IPA SERVER
 ======================================================================
-_ldap._tcp.serra.pw.    86400   IN      SRV     0 100 389 ipa2.serra.pw.
+
+DNS Records for _ldap._tcp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _ldap._tcp.serra.pw.    86400   IN      SRV     0 100 389 ipa1.serra.pw.
+_ldap._tcp.serra.pw.    86400   IN      SRV     0 100 389 ipa2.serra.pw.
+
+DNS Records for _kerberos._tcp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kerberos._tcp.serra.pw. 86400  IN      SRV     0 100 88 ipa1.serra.pw.
 _kerberos._tcp.serra.pw. 86400  IN      SRV     0 100 88 ipa2.serra.pw.
+
+DNS Records for _kerberos._udp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kerberos._udp.serra.pw. 86400  IN      SRV     0 100 88 ipa2.serra.pw.
 _kerberos._udp.serra.pw. 86400  IN      SRV     0 100 88 ipa1.serra.pw.
-_kerberos-master._tcp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
+
+DNS Records for _kerberos-master._tcp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kerberos-master._tcp.serra.pw. 86400 IN SRV    0 100 88 ipa2.serra.pw.
-_kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa2.serra.pw.
+_kerberos-master._tcp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
+
+DNS Records for _kerberos-master._udp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
-_kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa1.serra.pw.
+_kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa2.serra.pw.
+
+DNS Records for _kpasswd._tcp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa2.serra.pw.
+_kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa1.serra.pw.
+
+DNS Records for _kpasswd._udp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _kpasswd._udp.serra.pw. 86400   IN      SRV     0 100 464 ipa1.serra.pw.
 _kpasswd._udp.serra.pw. 86400   IN      SRV     0 100 464 ipa2.serra.pw.
-_ntp._udp.serra.pw.     86400   IN      SRV     0 100 123 ipa1.serra.pw.
+
+DNS Records for _ntp._udp.serra.pw by 192.168.122.101
+--------------------------------------------------------------------------
 _ntp._udp.serra.pw.     86400   IN      SRV     0 100 123 ipa2.serra.pw.
+_ntp._udp.serra.pw.     86400   IN      SRV     0 100 123 ipa1.serra.pw.
+
 
 
 DNS RECORDS CHECKED AGAINST 192.168.122.102 IPA SERVER
 ======================================================================
+
+DNS Records for _ldap._tcp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _ldap._tcp.serra.pw.    86400   IN      SRV     0 100 389 ipa2.serra.pw.
 _ldap._tcp.serra.pw.    86400   IN      SRV     0 100 389 ipa1.serra.pw.
+
+DNS Records for _kerberos._tcp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kerberos._tcp.serra.pw. 86400  IN      SRV     0 100 88 ipa1.serra.pw.
 _kerberos._tcp.serra.pw. 86400  IN      SRV     0 100 88 ipa2.serra.pw.
+
+DNS Records for _kerberos._udp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kerberos._udp.serra.pw. 86400  IN      SRV     0 100 88 ipa2.serra.pw.
 _kerberos._udp.serra.pw. 86400  IN      SRV     0 100 88 ipa1.serra.pw.
+
+DNS Records for _kerberos-master._tcp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kerberos-master._tcp.serra.pw. 86400 IN SRV    0 100 88 ipa2.serra.pw.
 _kerberos-master._tcp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
-_kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
+
+DNS Records for _kerberos-master._udp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa2.serra.pw.
-_kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa2.serra.pw.
+_kerberos-master._udp.serra.pw. 86400 IN SRV    0 100 88 ipa1.serra.pw.
+
+DNS Records for _kpasswd._tcp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa1.serra.pw.
+_kpasswd._tcp.serra.pw. 86400   IN      SRV     0 100 464 ipa2.serra.pw.
+
+DNS Records for _kpasswd._udp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _kpasswd._udp.serra.pw. 86400   IN      SRV     0 100 464 ipa1.serra.pw.
 _kpasswd._udp.serra.pw. 86400   IN      SRV     0 100 464 ipa2.serra.pw.
+
+DNS Records for _ntp._udp.serra.pw by 192.168.122.102
+--------------------------------------------------------------------------
 _ntp._udp.serra.pw.     86400   IN      SRV     0 100 123 ipa1.serra.pw.
 _ntp._udp.serra.pw.     86400   IN      SRV     0 100 123 ipa2.serra.pw.
+
 
 
 Checking NTP conection UDP Port 123
@@ -91,10 +161,4 @@ NTP Connection to port UDP:123 to 192.168.122.101 is OK
 NTP Connection to port UDP:123 to 192.168.122.102 is OK
 =========================================================================================
 
-
-
-Checking /etc/resolv.conf contains NEW IPA DNS Server
-=====================================================
-We found 192.168.122.101 in /etc/resolv.conf which is OK
-We found 192.168.122.102 in /etc/resolv.conf which is OK
 

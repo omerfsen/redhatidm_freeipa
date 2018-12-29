@@ -1,17 +1,19 @@
 #!/bin/sh
-# Maintained by: Omer SEN <omer_D_O_T_sen@serra___pw>
+# Maintained by: Omer SEN 
 # 
 
 ################## VARS BEGIN ###############
 FROM_IP=`hostname -i`
-IPA_SERVERS="192.168.122.101 192.168.122.102"
-DOMAIN="serra.pw"
+# IPA_SERVERS="192.168.122.101 192.168.122.102"
+# DOMAIN="serra.pw"
 TCP_PORTS="53 88 389 636 443 464"
 UDP_PORTS="53 88 123 464"
 ################## VARS END   ###############
 
 
-# DOMAIN="serra.pw"
+
+
+# IPA_TEST_SERVERS
 # IPA_SERVERS="192.168.122.101 192.168.122.102"
 
 
@@ -23,6 +25,20 @@ if [ `whoami` != "root" ];then
 fi
 
 
+dmidecode |grep -iq vmware
+if [ $? -eq 0 ];then
+        echo
+        echo "This is a Vmware System. Have you taken snapshot?"
+	echo -n " (Y/N ?): "
+	read V_Answer
+	if [ ${V_Answer} != "Y" ];then
+		echo "Please Take snapshot first and go on"
+        	exit 1
+	fi
+	
+fi
+
+
 echo "=============================================================================="
 echo "=============================================================================="
 echo "== This is `hostname` with IP Address of `hostname -i` =="
@@ -30,6 +46,8 @@ echo "==========================================================================
 echo "=============================================================================="
 echo ""
 echo ""
+
+
 
 
 
@@ -139,7 +157,7 @@ if [ $? -ne "0" ] ;then
 	exit 13
 
 else
-	echo "Your Hostname: `hostname -f` is OK"
+	echo "Your Hostname: `hostname` is OK"
 
 fi
 
@@ -169,6 +187,21 @@ else
 fi
 
 ############ END OF IPA_PACKAGES ###########################
+
+
+
+############# START OF PAM_LDAP MODULES CHECK #############
+grep -irq pam_ldap /etc/pam.d/* 
+if [ $? -eq "0" ] ;then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "/etc/pam.d/ contains files pam_ldap definitions"
+        echo "Please fix and re-run this script again"
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo
+        exit 18
+
+fi
+############# END OF PAM_LDAP MODULES CHECK #############
 
 
 ########### CHECKING REDHAT VERSION #####################
@@ -285,6 +318,30 @@ do
 		echo
 		echo "========================================================================================="
 		echo "NTP Connection to port UDP:123 to ${IPA_IP} is OK"
+		echo "Syncing time with ${IPA_IP} with ntpdate command"
+		sleep 3
+		rpm -qa |grep -qi redhat-release-server-7
+		if [ $? -eq "0" ];then
+			ps axw|grep -q ntpd
+			if [ $? -eq "0" ];then
+				systemctl stop ntpd
+				ntpdate ${IPA_IP}
+				sleep 2
+				# systemctl start ntpd
+			else
+				ntpdate ${IPA_IP}
+			fi
+		else
+                        ps axw|grep -q ntpd
+                        if [ $? -eq "0" ];then
+                                service ntpd stop
+                                ntpdate ${IPA_IP}
+                                sleep 2
+                                # service ntpd start
+			else
+				ntpdate ${IPA_IP}
+                        fi			
+		fi
 		echo "========================================================================================="
 		echo
 	fi
@@ -302,3 +359,11 @@ echo
 
 
 
+echo "=============================================================="
+echo "=============================================================="
+echo "Please remove OLD LDAP configuration from"
+echo " /etc/openldap/ldap.conf and /etc/sssd/sssd.conf "
+echo "after you run ipa-client-install --mkhomedirs"
+echo "Becase ipa-install-client DOES NOT DELETE THEM"
+echo "=============================================================="
+echo "=============================================================="
